@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Prediction</title>
+
+    <!-- Add your CSS styles here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            text-align: center;
+            color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Loan Prediction</h1>
+    <form method="post" action="{{ url_for('predict') }}">
+        <!-- Add your input fields here -->
+
+        <label for="Gender">Gender:</label>
+        <select name="Gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+
+        <label for="Married">Married:</label>
+        <select name="Married" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+
+        <label for="Dependents">Dependents:</label>
+        <select name="Dependents" required>
+            <option value="1">1</option>
+            <option value="0">0</option>
+            <option value="2">2</option>
+            <option value="3+">3+</option>
+        </select>
+
+        <label for="Education">Education:</label>
+        <select name="Education" required>
+            <option value="Graduate">Graduate</option>
+            <option value="Not Graduate">Not Graduate</option>
+        </select>
+
+        <label for="Self_Employed">Self Employed:</label>
+        <select name="Self_Employed" required>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+        </select>
+
+        <label for="ApplicantIncome">Applicant Income:</label>
+        <input type="number" name="ApplicantIncome" required>
+
+        <label for="CoapplicantIncome">Coapplicant Income:</label>
+        <input type="number" name="CoapplicantIncome" required>
+
+        <label for="LoanAmount">Loan Amount:</label>
+        <input type="number" name="LoanAmount" required>
+
+        <label for="Loan_Amount_Term">Loan Amount Term:</label>
+        <input type="number" name="Loan_Amount_Term" required>
+
+        <label for="Credit_History">Credit History:</label>
+        <select name="Credit_History" required>
+            <option value="1">1</option>
+            <option value="0">0</option>
+        </select>
+
+        <label for="Property_Area">Property Area:</label>
+        <select name="Property_Area" required>
+            <option value="Rural">Rural</option>
+            <option value="Urban">Urban</option>
+            <option value="Semiurban">Semiurban</option>
+        </select>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction_result %}
+        <h2>Prediction Result: {{ prediction_result }}</h2>
+    {% endif %}
+</body>
+</html>
